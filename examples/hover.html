@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<meta charset='utf-8'/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+		<script src="../imageswitch/jquery.imageswitch.js" type="text/javascript"></script>
+
+		<script>
+			$(document).ready(function() {
+				$('.image_switch').imageSwitch('hover');
+			});
+		</script>
+
+		<style>
+			.image_switch {
+			  position: relative;
+			  width: 128px;
+			  height: 128px;
+			  
+			  margin: 10px;
+			  float: left;
+			}
+			.image_switch img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+				background: #b5cede;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Hover Example</h2>
+		
+		<p>Hover Mouse over images to see the animation effect.</p>
+	
+		<div class="image_switch">
+			<img class="imageBottom" src="imgs/example_bottom_1.png" />
+			<img class="imageTop" src="imgs/example_top_1.png" />
+		</div>
+
+		<div class="image_switch">
+			<img class="imageBottom" src="imgs/example_bottom_2.png" />
+			<img class="imageTop" src="imgs/example_top_2.png" />
+		</div>
+
+		<div class="image_switch">
+			<img class="imageBottom" src="imgs/example_bottom_3.png" />
+			<img class="imageTop" src="imgs/example_top_3.png" />
+		</div>
+		
+		<div class="image_switch">
+			<img class="imageBottom" src="imgs/example_bottom_4.png" />
+			<img class="imageTop" src="imgs/example_top_4.png" />
+		</div>
+	</body>
+</html>

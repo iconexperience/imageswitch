@@ -1,7 +1,7 @@
 jQuery ImageSwitch Plugin
 
 
-DECSCRIPTION
+DESCRIPTION
 ===========
 
 The plugin is used to perform switch animations between two overlapping images.
@@ -34,8 +34,10 @@ MINIMAL FULL WORKING EXAMPLE
 		    <style>
 		        .image_switch {
 		            position: relative;
+		            width: 128px;
+		            height: 128px;
 		        }
-		    	.image_switch img:first-child {
+		    	.image_switch img {
 		    		position: absolute;
 			    	top: 0;
 		    	}
