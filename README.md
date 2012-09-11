@@ -5,6 +5,7 @@ DESCRIPTION
 ===========
 
 The plugin is used to perform switch animations between two overlapping images.
+The plugin was originally developed to switch between two icons in different style as can be seen here. 
 
 
 FEATURES
@@ -180,23 +181,19 @@ API
 
 
 .imageSwitch('init'), .imageSwitch()
-====================================
+------------------------------------
 
 Description: Init the ImageSwitch Object with. 
 
-***
+### .imageSwitch('init'[, callBack]), .imageSwitch([callBack]) - Returns: jQuery
 
-.imageSwitch('init'[, callBack]), .imageSwitch([callBack]) - Returns: jQuery
---------------------------------------------------
+callback - A function to call once the animation is complete.
 
-### callback - A function to call once the animation is complete.
+### .imageSwitch('init'[, options][, callBack]), .imageSwitch([options][, callBack]) - Returns: jQuery
 
-.imageSwitch('init'[, options][, callBack]), .imageSwitch([options][, callBack]) - Returns: jQuery
--------------------------------------------------------------
+callback - A function to call once the animation is complete.
 
-### callback - A function to call once the animation is complete.
-
-### options - A map of additional options to pass to the method. Supported Keys:
+options - A map of additional options to pass to the method. Supported Keys:
 
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'      

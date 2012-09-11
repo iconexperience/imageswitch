@@ -726,9 +726,6 @@
 			var topElems = [];
 			$(elems).each(function(i, elem) {
 				if (elem._displayTopImg) {
-					//if (changeState) {
-					//	elem._displayTopImg = false;
-					//}
 					topElems.push(elem);
 				}
 			});
@@ -739,9 +736,6 @@
 			var bottomElems = [];
 			$(elems).each(function(i, elem) {
 				if (!(elem._displayTopImg)) {
-					//if (changeState) {
-					//	elem._displayTopImg = true;
-					//}
 					bottomElems.push(elem);
 				}
 			});
