@@ -1,15 +1,16 @@
 jQuery ImageSwitch Plugin
+=========================
 
 
 DESCRIPTION
-===========
+-----------
 
 The plugin is used to perform switch animations between two overlapping images.
 The plugin was originally developed to switch between two icons in different style as can be seen here. 
 
 
 FEATURES
-========
+--------
 
  + different switch animation effects
  + switch on mouse hover
@@ -18,7 +19,7 @@ FEATURES
 
 
 MINIMAL FULL WORKING EXAMPLE
-============================
+----------------------------
 
     <!DOCTYPE html>
     <html>
@@ -63,12 +64,10 @@ MINIMAL FULL WORKING EXAMPLE
     </html>
   
 
-
 SETUP
-=====
+-----
 
-Script
-------
+### Script
 
 To setup the ImageSwitch plugin simply include the javascript file in the <head> of your document
     <script type="text/javascript" src="jquery.imageSwitch.js"></script>
@@ -77,8 +76,7 @@ You will also need to include jQuery
 
     <script type="text/javscript" src=""jquery.js"></script>
 
-Markup
-------
+### Markup
 
 Place the top and bottom image in a surrounding div.
 
@@ -101,8 +99,7 @@ If you would like to use background images instead you must declare classes 'ima
       <div class="imageTop" style="background: url('imgs/bottom_image.png')"></div>
     </div>
 
-Style
------
+### Style
 
 The two top and bottom image must completely overlap. A basic way to achieve this is 
 
@@ -118,7 +115,7 @@ The two top and bottom image must completely overlap. A basic way to achieve thi
 
 
 BASIC USAGE
-===========
+-----------
 
 To switch from the top image to the bottom image you can simply call:
 
@@ -171,30 +168,26 @@ The init function can be queued just like any other action:
       .imageSwitch('init', { duration: 500 }) // init animation time for all future calls
       .imageSwitch('top') // switch to top in 500 milliseconds
     
-This is just a small overview of what's possible with this plugin. See the API reference below to get the complete picture.   
-
+This is just a small overview of what's possible with this plugin. See the API reference below to get the complete picture.
 
 
 
 API
-===
+---
 
-
-.imageSwitch('init'), .imageSwitch()
-------------------------------------
+### .imageSwitch('init'), .imageSwitch()
 
 Description: Init the ImageSwitch Object with. 
 
-### .imageSwitch('init'[, callBack]), .imageSwitch([callBack]) - Returns: jQuery
+#### .imageSwitch('init'[, callBack]), .imageSwitch([callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
-### .imageSwitch('init'[, options][, callBack]), .imageSwitch([options][, callBack]) - Returns: jQuery
+#### .imageSwitch('init'[, options][, callBack]), .imageSwitch([options][, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
-
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'                        
  + duration: Time in milliseconds
@@ -211,21 +204,19 @@ options - A map of additional options to pass to the method. Supported Keys:
                       defaults to: false
                       
                       
-.imageSwitch('top')
--------------------
+### .imageSwitch('top')
 
 Description: Animate to top image.
 
-### .imageSwitch('top'[, callBack]) - Returns: jQuery
+#### .imageSwitch('top'[, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
-### .imageSwitch('top'[, options][, callBack]) - Returns: jQuery
+#### .imageSwitch('top'[, options][, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
-
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'      
  + duration: Time in milliseconds
@@ -246,21 +237,19 @@ options - A map of additional options to pass to the method. Supported Keys:
           defaults to: false { order: 'forward', interval: #duration of animation# }}
 
 
-.imageSwitch('bottom')
-----------------------
+### .imageSwitch('bottom')
 
 Description: Animate to bottom image.
 
-### .imageSwitch('bottom'[, callBack]) - Returns: jQuery
+#### .imageSwitch('bottom'[, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
-### .imageSwitch('bottom'[, options][, callBack]) - Returns: jQuery
+#### .imageSwitch('bottom'[, options][, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
-
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'                         
  + duration: Time in milliseconds
@@ -271,21 +260,19 @@ options - A map of additional options to pass to the method. Supported Keys:
           defaults to: 'fx'
 
 
-.imageSwitch('toggle')
-----------------------
+### .imageSwitch('toggle')
 
 Description: Animate to other image.
 
-### .imageSwitch('toggle'[, callBack]) - Returns: jQuery
+#### .imageSwitch('toggle'[, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
-### .imageSwitch('toggle'[, options][, callBack]) - Returns: jQuery
+#### .imageSwitch('toggle'[, options][, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
-
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'                         
  + duration: Time in milliseconds
@@ -296,21 +283,19 @@ options - A map of additional options to pass to the method. Supported Keys:
           defaults to: 'fx'
 
 
-.imageSwitch('blink')
----------------------
+### .imageSwitch('blink')
 
 Description: Animate to other image and back. This is equivalent to calling toggle twice.
 
-### .imageSwitch('blink'[, callBack]) - Returns: jQuery
+#### .imageSwitch('blink'[, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
-### .imageSwitch('blink'[, options][, callBack]) - Returns: jQuery
+#### .imageSwitch('blink'[, options][, callBack]) - Returns: jQuery
 
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
-
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'                         
  + duration: Time in milliseconds
@@ -326,15 +311,13 @@ options - A map of additional options to pass to the method. Supported Keys:
  + switch2Options: options for second toggle animation.
                    defaults to: {}
 
-.imageSwitch('hover')
----------------------
+### .imageSwitch('hover')
 
 Description: Apply switch image animation when mouse hovers over element.
 
-### .imageSwitch('hover'[, options]) - Returns: jQuery
+#### .imageSwitch('hover'[, options]) - Returns: jQuery
 
 options - A map of additional options to pass to the method. Supported Keys:
-
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'                         
  + duration: Time in milliseconds
@@ -370,14 +353,12 @@ options - A map of additional options to pass to the method. Supported Keys:
                    defaults to: true
           
           
-.imageSwitch('stop')
---------------------
+### .imageSwitch('stop')
 
 Description: Stops animations.
 
-### .imageSwitch('stop'[, options]) - Returns: jQuery
+#### .imageSwitch('stop'[, options]) - Returns: jQuery
 
 options - A map of additional options to pass to the method. Supported Keys:
-
  + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
           defaults to
