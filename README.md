@@ -206,22 +206,22 @@ callback - A function to call once the animation is complete.
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
-+ transformation: A string indicating which transformation animation to use ('fade', 'slide')
++ *transformation*: A string indicating which transformation animation to use ('fade', 'slide')
     
     defaults to: 'fade'                        
-+ duration: Time in milliseconds
++ *duration*: Time in milliseconds
 
     defaults to: 1000
-+ easing: A string indicating the easing function to use (see jQuery easing documentation)
++ *easing*: A string indicating the easing function to use (see jQuery easing documentation)
     
     defaults to: 'linear'
-+ queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
++ *queue*: A string indicating what queue to use for the animation (see jQuery queue documentation)
     
     defaults to: 'fx'
-+ selectors: A map with keys imgBottom and imgTop to specify specific selectors for the bottom and top image
++ *selectors*: A map with keys imgBottom and imgTop to specify specific selectors for the bottom and top image
     
     defaults to: { imgBottom: ':first-child', imgTop: ':nth-child(2)' }
-+ switchBottomImage: A boolean indicating if the bottom image should also be animated. This is useful for semi transparent images where bottom image would be visible underneath the top image. 
++ *switchBottomImage*: A boolean indicating if the bottom image should also be animated. This is useful for semi transparent images where bottom image would be visible underneath the top image. 
     
     defaults to: false
                       
@@ -240,49 +240,49 @@ callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
  
-+ transformation: A string indicating which transformation animation to use ('fade', 'slide')
++ *transformation*: A string indicating which transformation animation to use ('fade', 'slide')
     
     defaults to: 'fade'      
-+ duration: Time in milliseconds
++ *duration*: Time in milliseconds
     
     defaults to: 1000
-+ easing: A string indicating the easing function to use (see jQuery easing documentation)
++ *easing*: A string indicating the easing function to use (see jQuery easing documentation)
     
     defaults to: 'linear'
-+ queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
++ *queue*: A string indicating what queue to use for the animation (see jQuery queue documentation)
     
     defaults to: 'fx'
-+ onStart: Callback function when animation starts
++ *onStart*: Callback function when animation starts
     
     defaults to: #empty function#
-+ onFinish: Callback function when animation finishes
++ *onFinish*: Callback function when animation finishes
     
     defaults to: #empty function#
-+ cycle: Set to true to run animation in an repeating cycle
++ *cycle*: Set to true to run animation in an repeating cycle
     
     defaults to: false
-+ cyclePauseDuration: Time in milliseconds to pause between cycles
++ *cyclePauseDuration*: Time in milliseconds to pause between cycles
     
     defaults to: 2000
-+ onStartCycle: Callback function when cycle starts
++ *onStartCycle*: Callback function when cycle starts
     
     defaults to: #empty function#
-+ onFinishCycle: Callback function when cycle ends
++ *onFinishCycle*: Callback function when cycle ends
     
     defaults to: #empty function#
-+ sequence: Animate all images one by one in a sequence order.
++ *sequence*: Animate all images one by one in a sequence order.
 
     You can set this option to true or false. If you want more control pass a map of additional options:
-    + order: set to 'forward' | 'reverse' | 'random'
+    + *order*: set to 'forward' | 'reverse' | 'random'
         
         defaults to: 'forward'
-    + interval: time in milliseconds
+    + *interval*: time in milliseconds
         
         defaults to: #duration of animation#
-    + onStartSequenceStep: Callback function when each animation in the sequence starts.
+    + *onStartSequenceStep*: Callback function when each animation in the sequence starts.
         
         defaults to: #empty function#
-    + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
+    + *onFinishSequenceStep*: Callback function when each animation in the sequence finishes.
         
         defaults to: #empty function#
     
