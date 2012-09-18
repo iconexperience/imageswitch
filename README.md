@@ -298,7 +298,7 @@ Description: Animate to bottom image.
 
 #### .imageSwitch('bottom'[, callback]) - Returns: jQuery
 
-callback - A function to call once the animation is complete.
+**callback** - A function to call once the animation is complete.
 
 #### .imageSwitch('bottom'[, options][, callback]) - Returns: jQuery
 
@@ -363,7 +363,7 @@ Description: Animate to other image.
 
 #### .imageSwitch('toggle'[, callback]) - Returns: jQuery
 
-callback - A function to call once the animation is complete.
+**callback** - A function to call once the animation is complete.
 
 #### .imageSwitch('toggle'[, options][, callback]) - Returns: jQuery
 
@@ -428,7 +428,7 @@ Description: Animate to other image and back. This is equivalent to calling togg
 
 #### .imageSwitch('blink'[, callback]) - Returns: jQuery
 
-callback - A function to call once the animation is complete.
+**callback** - A function to call once the animation is complete.
 
 #### .imageSwitch('blink'[, options][, callback]) - Returns: jQuery
 
