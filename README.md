@@ -206,20 +206,24 @@ callback - A function to call once the animation is complete.
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
- + transformation: A string indicating which transformation animation to use ('fade', 'slide')
-                   defaults to: 'fade'                        
- + duration: Time in milliseconds
-             defaults to: 1000
- + easing: A string indicating the easing function to use (see jQuery easing documentation)
-           defaults to: 'linear'
- + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-          defaults to: 'fx'
- + selectors: A map with keys imgBottom and imgTop to specify specific selectors for the bottom and top image
-              Can only be set on a 
-              defaults to: { imgBottom: ':first-child', imgTop: ':nth-child(2)' }
- + switchBottomImage: A boolean indicating if the bottom image should also be animated. This is useful for
-                      semi transparent images where bottom image would be visible underneath the top image. 
-                      defaults to: false
++ transformation: A string indicating which transformation animation to use ('fade', 'slide')
+    
+                  defaults to: 'fade'                        
++ duration: Time in milliseconds
+
+            defaults to: 1000
++ easing: A string indicating the easing function to use (see jQuery easing documentation)
+    
+    defaults to: 'linear'
++ queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
+    
+    defaults to: 'fx'
++ selectors: A map with keys imgBottom and imgTop to specify specific selectors for the bottom and top image
+    
+    defaults to: { imgBottom: ':first-child', imgTop: ':nth-child(2)' }
++ switchBottomImage: A boolean indicating if the bottom image should also be animated. This is useful for semi transparent images where bottom image would be visible underneath the top image. 
+    
+    defaults to: false
                       
                       
 ### .imageSwitch('top')
