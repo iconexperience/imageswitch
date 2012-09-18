@@ -285,39 +285,41 @@ callback - A function to call once the animation is complete.
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
- + transformation: A string indicating which transformation animation to use ('fade', 'slide')
-                   defaults to: 'fade'      
- + duration: Time in milliseconds
-             defaults to: 1000
- + easing: A string indicating the easing function to use (see jQuery easing documentation)
-           defaults to: 'linear'
- + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-          defaults to: 'fx'
- + onStart: Callback function when animation starts
+ 
++ transformation: A string indicating which transformation animation to use ('fade', 'slide')
+                  defaults to: 'fade'      
++ duration: Time in milliseconds
+            defaults to: 1000
++ easing: A string indicating the easing function to use (see jQuery easing documentation)
+          defaults to: 'linear'
++ queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
+         defaults to: 'fx'
++ onStart: Callback function when animation starts
+           defaults to: #empty function#
++ onFinish: Callback function when animation finishes
             defaults to: #empty function#
- + onFinish: Callback function when animation finishes
-             defaults to: #empty function#
- + cycle: Set to true to run animation in an repeating cycle
-          defaults to: false
- + cyclePauseDuration: Time in milliseconds to pause between cycles
-                       defaults to: 2000
- + onStartCycle: Callback function when cycle starts
++ cycle: Set to true to run animation in an repeating cycle
+         defaults to: false
++ cyclePauseDuration: Time in milliseconds to pause between cycles
+                      defaults to: 2000
++ onStartCycle: Callback function when cycle starts
+                defaults to: #empty function#
++ onFinishCycle: Callback function when cycle ends
                  defaults to: #empty function#
- + onFinishCycle: Callback function when cycle ends
-                  defaults to: #empty function#
- + sequence: Animate all images one by one in a sequence order.
-             You can set this option to true or false. If you want more control pass a map of additional options:
-               + order: set to 'forward' | 'reverse' | 'random'
-                        defaults to: 'forward'
-               + interval: time in milliseconds
-                           defaults to: #duration of animation#
-               + onStartSequenceStep: Callback function when each animation in the sequence starts.
-                                      defaults to: #empty function#
-               + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
-                                       defaults to: #empty function#
-             setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
-             defaults to: false
++ sequence: Animate all images one by one in a sequence order.
 
+    You can set this option to true or false. If you want more control pass a map of additional options:
+    + order: set to 'forward' | 'reverse' | 'random'
+             defaults to: 'forward'
+    + interval: time in milliseconds
+                defaults to: #duration of animation#
+    + onStartSequenceStep: Callback function when each animation in the sequence starts.
+                           defaults to: #empty function#
+    + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
+                            defaults to: #empty function#
+    
+    setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
+    defaults to: false
 
 ### .imageSwitch('toggle')
 
@@ -333,39 +335,40 @@ callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
  
- + transformation: A string indicating which transformation animation to use ('fade', 'slide')
-                   defaults to: 'fade'      
- + duration: Time in milliseconds
-             defaults to: 1000
- + easing: A string indicating the easing function to use (see jQuery easing documentation)
-           defaults to: 'linear'
- + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-          defaults to: 'fx'
- + onStart: Callback function when animation starts
++ transformation: A string indicating which transformation animation to use ('fade', 'slide')
+                  defaults to: 'fade'      
++ duration: Time in milliseconds
+            defaults to: 1000
++ easing: A string indicating the easing function to use (see jQuery easing documentation)
+          defaults to: 'linear'
++ queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
+         defaults to: 'fx'
++ onStart: Callback function when animation starts
+           defaults to: #empty function#
++ onFinish: Callback function when animation finishes
             defaults to: #empty function#
- + onFinish: Callback function when animation finishes
-             defaults to: #empty function#
- + cycle: Set to true to run animation in an repeating cycle
-          defaults to: false
- + cyclePauseDuration: Time in milliseconds to pause between cycles
-                       defaults to: 2000
- + onStartCycle: Callback function when cycle starts
++ cycle: Set to true to run animation in an repeating cycle
+         defaults to: false
++ cyclePauseDuration: Time in milliseconds to pause between cycles
+                      defaults to: 2000
++ onStartCycle: Callback function when cycle starts
+                defaults to: #empty function#
++ onFinishCycle: Callback function when cycle ends
                  defaults to: #empty function#
- + onFinishCycle: Callback function when cycle ends
-                  defaults to: #empty function#
- + sequence: Animate all images one by one in a sequence order.
-             You can set this option to true or false. If you want more control pass a map of additional options:
-               + order: set to 'forward' | 'reverse' | 'random'
-                        defaults to: 'forward'
-               + interval: time in milliseconds
-                           defaults to: #duration of animation#
-               + onStartSequenceStep: Callback function when each animation in the sequence starts.
-                                      defaults to: #empty function#
-               + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
-                                       defaults to: #empty function#
-             setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
-             defaults to: false
++ sequence: Animate all images one by one in a sequence order.
 
+    You can set this option to true or false. If you want more control pass a map of additional options:
+    + order: set to 'forward' | 'reverse' | 'random'
+             defaults to: 'forward'
+    + interval: time in milliseconds
+                defaults to: #duration of animation#
+    + onStartSequenceStep: Callback function when each animation in the sequence starts.
+                           defaults to: #empty function#
+    + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
+                            defaults to: #empty function#
+    
+    setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
+    defaults to: false
 
 ### .imageSwitch('blink')
 
@@ -380,46 +383,47 @@ callback - A function to call once the animation is complete.
 callback - A function to call once the animation is complete.
 
 options - A map of additional options to pass to the method. Supported Keys:
-
- + transformation: A string indicating which transformation animation to use ('fade', 'slide')
-                   defaults to: 'fade'      
- + duration: Time in milliseconds
-             defaults to: 1000
- + easing: A string indicating the easing function to use (see jQuery easing documentation)
-           defaults to: 'linear'
- + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-          defaults to: 'fx'
- + onStart: Callback function when animation starts
+ 
++ transformation: A string indicating which transformation animation to use ('fade', 'slide')
+                  defaults to: 'fade'      
++ duration: Time in milliseconds
+            defaults to: 1000
++ easing: A string indicating the easing function to use (see jQuery easing documentation)
+          defaults to: 'linear'
++ queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
+         defaults to: 'fx'
++ onStart: Callback function when animation starts
+           defaults to: #empty function#
++ onFinish: Callback function when animation finishes
             defaults to: #empty function#
- + onFinish: Callback function when animation finishes
-             defaults to: #empty function#
- + cycle: Set to true to run animation in an repeating cycle
-          defaults to: false
- + cyclePauseDuration: Time in milliseconds to pause between cycles
-                       defaults to: 2000
- + onStartCycle: Callback function when cycle starts
++ cycle: Set to true to run animation in an repeating cycle
+         defaults to: false
++ cyclePauseDuration: Time in milliseconds to pause between cycles
+                      defaults to: 2000
++ onStartCycle: Callback function when cycle starts
+                defaults to: #empty function#
++ onFinishCycle: Callback function when cycle ends
                  defaults to: #empty function#
- + onFinishCycle: Callback function when cycle ends
-                  defaults to: #empty function#
- + sequence: Animate all images one by one in a sequence order.
-             You can set this option to true or false. If you want more control pass a map of additional options:
-                 + order: set to 'forward' | 'reverse' | 'random'
-                        defaults to: 'forward'
-             
-                 + interval: time in milliseconds
-                           defaults to: #duration of animation#
-                 + onStartSequenceStep: Callback function when each animation in the sequence starts.
-                                      defaults to: #empty function#
-                 + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
-                                       defaults to: #empty function#
-             setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
-             defaults to: false
- + pauseDuration: Time in milliseconds
-                  defaults to: 0
- + switch1Options: options for first toggle animation. 
-                   defaults to: {}
- + switch2Options: options for second toggle animation.
-                   defaults to: {}
++ sequence: Animate all images one by one in a sequence order.
+
+    You can set this option to true or false. If you want more control pass a map of additional options:
+    + order: set to 'forward' | 'reverse' | 'random'
+             defaults to: 'forward'
+    + interval: time in milliseconds
+                defaults to: #duration of animation#
+    + onStartSequenceStep: Callback function when each animation in the sequence starts.
+                           defaults to: #empty function#
+    + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
+                            defaults to: #empty function#
+    
+    setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
+    defaults to: false
++ pauseDuration: Time in milliseconds
+                 defaults to: 0
++ switch1Options: options for first toggle animation. 
+                  defaults to: {}
++ switch2Options: options for second toggle animation.
+                  defaults to: {}
 
 ### .imageSwitch('hover')
 
@@ -428,6 +432,7 @@ Description: Apply switch image animation when mouse hovers over element.
 #### .imageSwitch('hover'[, options]) - Returns: jQuery
 
 options - A map of additional options to pass to the method. Supported Keys:
+ 
  + transformation: A string indicating which transformation animation to use ('fade', 'slide')
                    defaults to: 'fade'                         
  + duration: Time in milliseconds
@@ -470,5 +475,6 @@ Description: Stops animations.
 #### .imageSwitch('stop'[, options]) - Returns: jQuery
 
 options - A map of additional options to pass to the method. Supported Keys:
+ 
  + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
           defaults to
