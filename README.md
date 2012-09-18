@@ -256,7 +256,9 @@ options - A map of additional options to pass to the method. Supported Keys:
                 defaults to: #empty function#
 + onFinishCycle: Callback function when cycle ends
                  defaults to: #empty function#
-+ sequence: Animate all images one by one in a sequence order. You can set this option to true or false. If you want more control pass a map of additional options:
++ sequence: Animate all images one by one in a sequence order.
+
+    You can set this option to true or false. If you want more control pass a map of additional options:
     + order: set to 'forward' | 'reverse' | 'random'
              defaults to: 'forward'
     + interval: time in milliseconds
@@ -265,9 +267,9 @@ options - A map of additional options to pass to the method. Supported Keys:
                            defaults to: #empty function#
     + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
                             defaults to: #empty function#
-               
-            setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
-            defaults to: false
+    
+    setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
+    defaults to: false
 
 
 ### .imageSwitch('bottom')
