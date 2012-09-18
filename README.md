@@ -208,10 +208,10 @@ callback - A function to call once the animation is complete.
 options - A map of additional options to pass to the method. Supported Keys:
 + transformation: A string indicating which transformation animation to use ('fade', 'slide')
     
-                  defaults to: 'fade'                        
+    defaults to: 'fade'                        
 + duration: Time in milliseconds
 
-            defaults to: 1000
+    defaults to: 1000
 + easing: A string indicating the easing function to use (see jQuery easing documentation)
     
     defaults to: 'linear'
@@ -274,13 +274,17 @@ options - A map of additional options to pass to the method. Supported Keys:
 
     You can set this option to true or false. If you want more control pass a map of additional options:
     + order: set to 'forward' | 'reverse' | 'random'
-             defaults to: 'forward'
+        
+        defaults to: 'forward'
     + interval: time in milliseconds
-                defaults to: #duration of animation#
+        
+        defaults to: #duration of animation#
     + onStartSequenceStep: Callback function when each animation in the sequence starts.
-                           defaults to: #empty function#
+        
+        defaults to: #empty function#
     + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
-                            defaults to: #empty function#
+        
+        defaults to: #empty function#
     
     setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
     
