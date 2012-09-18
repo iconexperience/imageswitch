@@ -7,7 +7,7 @@ DESCRIPTION
 -----------
 
 The plugin is used to perform switch animations between two overlapping images.
-The plugin was originally developed to switch between two icons in different style as can be seen here. 
+The plugin was originally developed for a demonstration to switch between two icons in different style as can be seen here.
 
 
 FEATURES
@@ -16,21 +16,24 @@ FEATURES
  + different switch animation effects
  + switch on mouse hover
  + sequential switch on multiple images
- + switching between two semi-transparent images
+ + switching between two transparent images
 
 
 FILE STRUCTURE
 --------------
 
-/examples                 -> folder with fully working examples
-  /imgs                   -> images used for examples
-    ...
-  animations.html         -> 
-  hover.html              -> mouse hover example
-/imageswitch              
-  jquery.imageswitch.js   -> the ImageSwitch javascript jQuery plugin file
-  
-README.md                 -> this file
+    /examples                 -> folder with fully working examples
+      /imgs                   -> images used for examples
+        ...
+      /jquery                 -> jQuery sources
+        ...
+      all_examples.html       -> all examples
+      animation_queue         -> example with multiple queued animations
+      animations.html         -> basic animation example
+      hover.html              -> mouse hover example
+    /src              
+      jquery.imageswitch.js   -> ImageSwitch jQuery plugin file
+    README.md                 -> this readme file
 
 
 MINIMAL EXAMPLE
@@ -40,45 +43,45 @@ This is a minimal example of an HTML page with 3 overlapping Images which crossf
 
     <!DOCTYPE html>
     <html>
-	    <head>
-		    <script src="jquery.js" type="text/javascript"></script>
-	    	<script src="jquery.imageswitch.js" type="text/javascript"></script>
+      <head>
+        <script src="jquery.js" type="text/javascript"></script>
+        <script src="jquery.imageswitch.js" type="text/javascript"></script>
     
-		    <script>
-			    $(document).ready(function() {
-			    	$('.image_switch').imageSwitch('hover');
-	    		});
-    		</script>
-		
-		    <style>
-		        .image_switch {
-		            position: relative;
-		            width: 128px;
-		            height: 128px;
-		        }
-		    	.image_switch img {
-		    		position: absolute;
-			    	top: 0;
-			    	left: 0;
-		    	}
-		    </style>
-	    </head>
-	    <body>
-		    <div class="image_switch">
-			    <img src="example_bottom_image_1.png" />
-			    <img src="example_top_image_1.png" />
-		    </div>
-		
-		    <div class="image_switch">
-			    <img src="example_bottom_image_2.png" />
-			    <img src="imgs/example_top_image_2.png" />
-		    </div>
-		    
-		    <div class="image_switch">
-			    <img src="example_bottom_image_3.png" />
-			    <img src="example_top_image_3.png" />
-		    </div>
-	    </body>
+        <script>
+          $(document).ready(function() {
+            $('.image_switch').imageSwitch('hover');
+          });
+        </script>
+    
+        <style>
+            .image_switch {
+                position: relative;
+                width: 128px;
+                height: 128px;
+            }
+          .image_switch img {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="image_switch">
+          <img src="example_bottom_image_1.png" />
+          <img src="example_top_image_1.png" />
+        </div>
+    
+        <div class="image_switch">
+          <img src="example_bottom_image_2.png" />
+          <img src="imgs/example_top_image_2.png" />
+        </div>
+        
+        <div class="image_switch">
+          <img src="example_bottom_image_3.png" />
+          <img src="example_top_image_3.png" />
+        </div>
+      </body>
     </html> 
 
 
@@ -182,9 +185,9 @@ All methods can be customized by a couple of options. To set all calls on the sa
 The init function can be queued just like any other action:
 
     $(selector)
-      .imageSwitch('bottom') // switch to bottom in 1000 milliseconds default time 
+      .imageSwitch('bottom')                  // switch to bottom in 1000 milliseconds default time 
       .imageSwitch('init', { duration: 500 }) // init animation time for all future calls
-      .imageSwitch('top') // switch to top in 500 milliseconds
+      .imageSwitch('top')                     // switch to top in 500 milliseconds
     
 This is just a small overview of what's possible with this plugin. See the API reference below to get the complete picture.
 
