@@ -1,6 +1,7 @@
 jQuery ImageSwitch Plugin
 =========================
 
+***
 
 DESCRIPTION
 -----------
@@ -18,14 +19,30 @@ FEATURES
  + switching between two semi-transparent images
 
 
-MINIMAL FULL WORKING EXAMPLE
-----------------------------
+FILE STRUCTURE
+--------------
+
+/examples                 -> folder with fully working examples
+  /imgs                   -> images used for examples
+    ...
+  animations.html         -> 
+  hover.html              -> mouse hover example
+/imageswitch              
+  jquery.imageswitch.js   -> the ImageSwitch javascript jQuery plugin file
+  
+README.md                 -> this file
+
+
+MINIMAL EXAMPLE
+---------------
+
+This is a minimal example of an HTML page with 3 overlapping Images which crossfade from one image to the other when the mouse hovers over the images.
 
     <!DOCTYPE html>
     <html>
 	    <head>
-		    <script src="../jquery/jquery.js" type="text/javascript"></script>
-	    	<script src="../src/jquery.imageswitch.js" type="text/javascript"></script>
+		    <script src="jquery.js" type="text/javascript"></script>
+	    	<script src="jquery.imageswitch.js" type="text/javascript"></script>
     
 		    <script>
 			    $(document).ready(function() {
@@ -42,27 +59,28 @@ MINIMAL FULL WORKING EXAMPLE
 		    	.image_switch img {
 		    		position: absolute;
 			    	top: 0;
+			    	left: 0;
 		    	}
 		    </style>
 	    </head>
 	    <body>
 		    <div class="image_switch">
-			    <img src="imgs/example_bottom_image_1.png" />
-			    <img src="imgs/example_top_image_1.png" />
+			    <img src="example_bottom_image_1.png" />
+			    <img src="example_top_image_1.png" />
 		    </div>
 		
 		    <div class="image_switch">
-			    <img src="imgs/example_bottom_image_2.png" />
+			    <img src="example_bottom_image_2.png" />
 			    <img src="imgs/example_top_image_2.png" />
 		    </div>
 		    
 		    <div class="image_switch">
-			    <img src="imgs/example_bottom_image_3.png" />
-			    <img src="imgs/example_top_image_3.png" />
+			    <img src="example_bottom_image_3.png" />
+			    <img src="example_top_image_3.png" />
 		    </div>
 	    </body>
-    </html>
-  
+    </html> 
+
 
 SETUP
 -----
@@ -225,16 +243,30 @@ options - A map of additional options to pass to the method. Supported Keys:
            defaults to: 'linear'
  + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
           defaults to: 'fx'
+ + onStart: Callback function when animation starts
+            defaults to: #empty function#
+ + onFinish: Callback function when animation finishes
+             defaults to: #empty function#
  + cycle: Set to true to run animation in an repeating cycle
           defaults to: false
  + cyclePauseDuration: Time in milliseconds to pause between cycles
                        defaults to: 2000
  + onStartCycle: Callback function when cycle starts
-                 defaults to: empty function
+                 defaults to: #empty function#
  + onFinishCycle: Callback function when cycle ends
-          defaults to: empty function
- + sequence: 
-          defaults to: false { order: 'forward', interval: #duration of animation# }}
+                  defaults to: #empty function#
+ + sequence: Animate all images one by one in a sequence order.
+             You can set this option to true or false. If you want more control pass a map of additional options:
+               + order: set to 'forward' | 'reverse' | 'random'
+                        defaults to: 'forward'
+               + interval: time in milliseconds
+                           defaults to: #duration of animation#
+               + onStartSequenceStep: Callback function when each animation in the sequence starts.
+                                      defaults to: #empty function#
+               + onFinishSequenceStep: Callback function when each animation in the sequence finishes.
+                                       defaults to: #empty function#
+             setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}
+             defaults to: false
 
 
 ### .imageSwitch('bottom')
@@ -327,15 +359,15 @@ options - A map of additional options to pass to the method. Supported Keys:
  + queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
           defaults to: 'fx'
  + onStartHoverOver: Callback function when mouse moves over and animation starts.
-                     defaults to: empty function
+                     defaults to: #empty function#
  + onFinishHoverOver: Callback function when mouse moves over and animation finishes.
-                      defaults to: empty function
+                      defaults to: #empty function#
  + onStartHoverOut: Callback function when mouse moves out and animation starts.
-                    defaults to: empty function
+                    defaults to: #empty function#
  + onFinishHoverOut: Callback function when mouse moves out and animation finishes.
-                     defaults to: empty function
+                     defaults to: #empty function#
  + onAllFinishHoverOut: Incors.Util.emptyFunction,
-                        defaults to: empty function
+                        defaults to: #empty function#
  + hoverSelector: Specific selector to trigger mouse hover. By default the image switch element is used. 
                   defaults to: null
  + hoverSelectorDirectionUp: Direction for the hover selector (up, down). This makes it possible to specify a trigger for the mouse hover

@@ -30,6 +30,10 @@
 	});
 
 	Incors.ImageSwitch = function(elems, options, callback) {
+	  if (arguments.length == 0) {
+	  	 return;
+	  }
+	
 	  this.elems = elems;
 		
 		this.animationQueues = {};
@@ -45,6 +49,8 @@
 			imgTop: "img:last, .imageTop"
 		};
 		this.switchBottomImage = options.switchBottomImage ? options.switchBottomImage : false;
+			
+		this.options = $.extend({}, Incors.ImageSwitch.options, options || {});
 			
 		this._init(this.elems, options, callback, false);
 	};
@@ -244,12 +250,15 @@
 			var $this = this;
 			
 			this._wait_for_animations_finished('toggle', elems, function(triggerNextAnimation) {
+				options = $this._extendSwitchOptions(options);
+				options.onStart();
 				var toBottomElems = Incors.ImageSwitch.topElems(elems);
 				var toTopElems = Incors.ImageSwitch.bottomElems(elems);
 				
 				var doneCalls = 0;
 				var done = function() {
 					if (++doneCalls == 2) {
+						options.onFinish();
 						callback();
 						triggerNextAnimation();
 					}
@@ -313,19 +322,34 @@
 			this._wait_for_animations_finished('blink', elems, function(triggerNextAnimation) {
 				options = $this._extendSwitchOptions(options);
 				
+				options.onStart();
+				
 				options = $.extend({}, {
 					pauseDuration: 0
 				}, options);
-	
-				var switch1Options = options.switch1Options ? $.extend({}, options, options.switch1Options) : options;
-				var switch2Options = options.switch2Options ? $.extend({}, options, options.switch2Options) : options;
-				
-				$this._toggle(elems, switch1Options, null, true, stop);
+
+	      var options1 = $.extend({}, options, { onStart: Incors.Util.emptyFunction, onFinish: Incors.Util.emptyFunction });
+	      var options2 = $.extend({}, options, { onStart: Incors.Util.emptyFunction, onFinish: Incors.Util.emptyFunction });
+
+				var switch1Options = options.switch1Options ? $.extend({}, options1, options.switch1Options) : options1;
+				var switch2Options = options.switch2Options ? $.extend({}, options2, options.switch2Options) : options2;
+
+				$this._toggle(elems, switch1Options, function() {
+					window.setTimeout(function() {
+						$this._toggle(elems, switch2Options, function() {
+							options.onFinish();
+							callback();
+							triggerNextAnimation();
+						}, true, false);
+					}, options.pauseDuration);
+				}, true, stop);
+
+				/*$this._toggle(elems, switch1Options, null, true, stop);
 				$this._delay(elems, options.pauseDuration);
 				$this._toggle(elems, switch2Options, function() {
 					callback();
 					triggerNextAnimation();
-				}, true, false);
+				}, true, false);*/
 			}, startInstantly, options);
 		},
 		
@@ -348,9 +372,12 @@
 			callback = callback || Incors.Util.emptyFunction;
 			var $this = this;
 			this._wait_for_animations_finished('top', elems, function(triggerNextAnimation) {
+				options = $this._extendSwitchOptions(options);
+				options.onStart();
 				$this._transformToTop(elems, options, function() {
-					triggerNextAnimation();
+					options.onFinish();
 					callback();
+					triggerNextAnimation();
 				});
 			}, startInstantly, options);
 		},
@@ -374,14 +401,17 @@
 			callback = callback || Incors.Util.emptyFunction;
 			var $this = this;
 			this._wait_for_animations_finished('bottom', elems, function(triggerNextAnimation) {
+				options = $this._extendSwitchOptions(options);
+				options.onStart();
 				$this._transformToBottom(elems, options, function() {
-					triggerNextAnimation();
+					options.onFinish();
 					callback();
+					triggerNextAnimation();
 				});
 			}, startInstantly, options);
 		},
 		
-		_delay: function(elems, duration) {
+		_delay: function(elems, duration, callback) {
 			if (this.switchBottomImage) {
 				this._getImgsBottom(elems).delay(duration);
 			}
@@ -401,6 +431,12 @@
 					this._wait_for_animations_finished(action, elems, function(triggerNextAnimation) {
 						options = $this._extendSwitchOptions(options);
 						
+						options.onStart();
+						options.onStart = Incors.Util.emptyFunction;
+						
+						var onFinish = options.onFinish;
+						options.onFinish = Incors.Util.emptyFunction;
+						
 						sequenceOptions = $.extend({}, {
 							interval: options.duration,
 							onStartSequenceStep: Incors.Util.emptyFunction,
@@ -419,7 +455,10 @@
 							$.error('unknown sequence option order value: ' + sequenceOptions.order);
 						}
 								
-						$this._startSequelInterval(elems, options, sequenceOptions, transformation, triggerNextAnimation, callback);
+						$this._startSequelInterval(elems, options, sequenceOptions, transformation, triggerNextAnimation, function() {
+						  onFinish();
+						  callback();
+						});
 					}, false, options);
 				}
 				return true;
@@ -709,7 +748,9 @@
 		options: {
 			transformation: 'fade', // fade, slide
 			duration: 1000, // time in milliseconds
-			easing: 'linear'
+			easing: 'linear',
+			onStart: Incors.Util.emptyFunction,
+			onFinish: Incors.Util.emptyFunction
 		},
 		
 		methods: {
@@ -748,9 +789,15 @@
 		if ($.isPlainObject(method) || method == 'init') {
 		  var args = method == 'init' ? Array.prototype.slice.call( arguments, 1) : arguments;
 		  if (!(this._imageSwitcher)) {
-				this._imageSwitcher = new Incors.ImageSwitch(this, args);
-			} else {
-				this._imageSwitcher.init(args);
+		    if (arguments.length == 0) {
+		      this._imageSwitcher = new Incors.ImageSwitch(this);
+		    } else if (arguments.length == 1) {
+		      this._imageSwitcher = new Incors.ImageSwitch(this, arguments[0]);
+		    } else if (arguments.length == 2) {
+		    	this._imageSwitcher = new Incors.ImageSwitch(this, arguments[0], arguments[1]);
+		    }
+		  } else {
+				this._imageSwitcher.init.apply(this._imageSwitcher, args);
 			}			
 		} else if (typeof method == 'string') {
 			if (!(Incors.ImageSwitch.methods[method])) {

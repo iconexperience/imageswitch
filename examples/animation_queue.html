@@ -1,0 +1,174 @@
+<!-- 
+   An example of queuing multiple animations with different options.
+-->
+
+<!DOCTYPE html>
+<html>	
+	<head>
+		<meta charset='utf-8'/>
+		<script src="jquery/jquery.js" type="text/javascript"></script>
+		<script src="jquery/jquery-ui.min.js" type="text/javascript"></script>
+		<script src="../src/jquery.imageswitch.js" type="text/javascript"></script>
+
+		<script>
+			$(document).ready(function() {
+				var imageSwitchElems = $('.image_switch');
+			
+				// first init
+			  imageSwitchElems.imageSwitch({
+			    duration: 2000
+			  });
+			
+				$('#start').click(function() {
+					function animationQueue() {
+						imageSwitchElems
+							
+							// to bottom
+							.imageSwitch('bottom', {
+								onStart: outFunc("bottom  -  (no options)")
+							})
+							
+							// to top
+							.imageSwitch('top', {
+							  transformation: 'slide',
+								onStart: outFunc("top  -  options: { transformation: 'slide' }")
+							})
+							
+							// toggle
+							.imageSwitch('toggle', {
+							  duration: 5000,
+							  easing: 'easeInOutQuad', // needs jquery-ui
+							  onStart: outFunc("toggle  -  options: { duration: 5000; easing: 'easeInOutExpo' }")
+							})
+							
+							// jQuery fadeOut
+							.fadeOut(2000, outFunc('fadeOut (jQuery animation)'))
+							
+							// jQuery fadeIn
+							.fadeIn(2000, outFunc('fadeIn (jQuery animation)'))
+							
+							// blink
+							.imageSwitch('blink', {
+							  switch1Options: {
+							    duration: 500,
+							    onStart: outFunc("blink switch 1  -  options: { duration: 500 }")
+							  },
+							  switch2Options: {
+							    duration: 2000,
+							    onStart: outFunc("blink switch 2  -  options: { duration: 2000 }")
+							  },
+							  easing: 'easeInQuad', // needs jquery-ui
+							  onStart: outFunc("blink")
+							})
+							
+							// init
+							.imageSwitch('init', {
+							  transformation: 'slide',
+							  duration: 1000,
+							  onStart: outFunc("init  -  options: { transformation: 'slide', duration: 1000 }")
+							})
+							
+							// blink with sequence
+							.imageSwitch('blink', {
+						    sequence: true,
+							  onStart: outFunc("blink  -  options: { sequence: true }")
+							})
+							
+							// toggle with sequence and sequence options
+							.imageSwitch('toggle', {
+						    sequence: {
+						      order: 'reverse',
+						      interval: 2000,
+						      onStartSequenceStep: outFunc("start sequence step")
+						    },
+						    onStart: outFunc("toggle  -  options: { sequence: { order: 'reverse', interval: 2000 } }")
+							})
+							
+							// init
+							.imageSwitch('init', {
+							  transformation: 'fade',
+							  duration: 2000,
+							  onStart: outFunc("init  -  options: { transformation: 'fade', duration: 2000 }")
+							}, animationQueue)
+							
+							;
+							
+							
+					};
+					animationQueue();
+				});
+				
+				$('#stop').click(function() {
+				  out('stop');
+				  imageSwitchElems.imageSwitch('stop');
+				});
+				
+				var lineNum = 1;
+				function out(text) {
+				  $('#output').val(lineNum++ + ': ' + text + "\n" + $('#output').val()); 
+				}
+				function outFunc(text) {
+				  return function() { out(text) };
+				};
+				
+				$('#output').val('');
+			});
+		</script>
+
+		<style>
+			.image_switch {
+			  position: relative;
+			  width: 128px;
+			  height: 128px;
+			  
+			  margin: 10px;
+			  float: left;
+			  
+			}
+			.image_switch > div {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.imageBottom, .imageTop {
+			  width: 128px;
+			  height: 128px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Animation Examples</h2>
+		
+		<div>
+		  Apply Effect:
+		
+			<button id="start">start</button>
+			<button id="stop">stop</button>
+		</div>
+		
+		<div class="image_switch">
+			<div class="imageBottom" style="background: url('imgs/example_bottom_1.png') #555;"></div>
+			<div class="imageTop" style="background: url('imgs/example_top_1.png') #050;"></div>
+		</div>
+
+		<div class="image_switch">
+			<div class="imageBottom" style="background: url('imgs/example_bottom_2.png') #555;"></div>
+			<div class="imageTop" style="background: url('imgs/example_top_2.png') #050;"></div>
+		</div>
+
+		<div class="image_switch">
+			<div class="imageBottom" style="background: url('imgs/example_bottom_3.png') #555;"></div>
+			<div class="imageTop" style="background: url('imgs/example_top_3.png') #050;"></div>
+		</div>
+		
+		<div class="image_switch">
+			<div class="imageBottom" style="background: url('imgs/example_bottom_4.png') #555;"></div>
+			<div class="imageTop" style="background: url('imgs/example_top_4.png') #050;"></div>
+		</div>
+		
+		<div style="clear: both;"></div>
+		
+		<textarea id="output" style="width: 500px; height: 300px;"></textarea>
+	</body>
+</html>

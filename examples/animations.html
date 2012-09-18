@@ -1,45 +1,105 @@
+<!--
+   A basic example of the basic ImageSwitch animations.
+-->
+
 <!DOCTYPE html>
 <html>	
 	<head>
 		<meta charset='utf-8'/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
-		<script src="../imageswitch/jquery.imageswitch.js" type="text/javascript"></script>
+		<script src="jquery/jquery.js" type="text/javascript"></script>
+		<script src="../src/jquery.imageswitch.js" type="text/javascript"></script>
 
 		<script>
 			$(document).ready(function() {
 				var imageSwitchElems = $('.image_switch');
-				
+			
 				$('#bottom').click(function() {
-					imageSwitchElems.imageSwitch('bottom');
+					// animate to bottom image
+					out('bottom [queued]');
+					imageSwitchElems.imageSwitch('bottom', {
+					  onStart: function() { out('bottom [started]'); },
+					  onFinish: function() { out('bottom [finished]'); }
+					});
 				});
 				
 				$('#top').click(function() {
-					imageSwitchElems.imageSwitch('top');
+					// animate to top image
+					out('top [queued]');
+					imageSwitchElems.imageSwitch('top', {
+					  onStart: function() { out('top [started]'); },
+					  onFinish: function() { out('top [finished]'); }
+					});
 				});
 				
 				$('#toggle').click(function() {
-					imageSwitchElems.imageSwitch('toggle');
+					// animate a toggle action (switch bottom and top image) 
+					out('toggle [queued]');
+					imageSwitchElems.imageSwitch('toggle', {
+					  onStart: function() { out('toggle [started]'); },
+					  onFinish: function() { out('toggle [finished]'); }
+					});
 				});
 				
 				$('#blink').click(function() {
-					imageSwitchElems.imageSwitch('blink');
+				  // animate a blink action (toggle from one image to the other and back)
+					out('blink [queued]');
+					imageSwitchElems.imageSwitch('blink', {
+					  onStart: function() { out('blink [started]'); },
+					  onFinish: function() { out('blink [finished]'); }
+					});
 				});
 				
 				$('#bottom_sequence').click(function() {
-					imageSwitchElems.imageSwitch('bottom', { sequence: true });
+				  // animate to bottom in a sequence
+					out('bottom sequence [queued]');
+					imageSwitchElems.imageSwitch('bottom', {
+					  sequence: true,
+					  onStart: function() { out('bottom sequence [started]'); },
+					  onFinish: function() { out('bottom sequence [finished]'); }
+					});
 				});
 				
 				$('#top_sequence').click(function() {
-					imageSwitchElems.imageSwitch('top', { sequence: true });
+					// animate to top in a sequence
+					out('bottom [queued]');
+					imageSwitchElems.imageSwitch('top', {
+					  sequence: true,
+					  onStart: function() { out('top sequence [started]'); },
+					  onFinish: function() { out('top sequence [finished]'); }
+					});
 				});
 				
 				$('#toggle_sequence').click(function() {
-					imageSwitchElems.imageSwitch('toggle', { sequence: true });
+					// animate toggle in a sequence
+					out('toggle sequence [queued]');
+					imageSwitchElems.imageSwitch('toggle', {
+					  sequence: true,
+					  onStart: function() { out('toggle sequence [started]'); },
+					  onFinish: function() { out('toggle sequence [finished]'); }
+					});
 				});
 				
 				$('#blink_sequence').click(function() {
-					imageSwitchElems.imageSwitch('blink', { sequence: true });
+					// animate blink in a sequence
+					out('blink sequence [queued]');
+					imageSwitchElems.imageSwitch('blink', {
+					  sequence: true,
+					  onStart: function() { out('blink sequence [started]'); },
+					  onFinish: function() { out('blink sequence [finished]'); }
+					});
 				});
+				
+				$('#stop').click(function() {
+				  // stop all running animations
+				  out('stop');
+					imageSwitchElems.imageSwitch('stop', { sequence: true });
+				});
+				
+				var lineNum = 1;
+				function out(text) {
+				  $('#output').val(lineNum++ + ': ' + text + "\n" + $('#output').val()); 
+				}
+				$('#output').val('');
 				
 			});
 		</script>
@@ -63,11 +123,11 @@
 		</style>
 	</head>
 	<body>
-		<h2>Hover Example</h2>
-		
-		<p>Apply Effect:</p>
+		<h2>Animation Examples</h2>
 		
 		<div>
+		  Apply Effect:
+		
 			<button id="bottom">bottom</button>
 			<button id="top">top</button>
 			<button id="toggle">toggle</button>
@@ -76,6 +136,7 @@
 			<button id="top_sequence">top (sequence)</button>
 			<button id="toggle_sequence">toggle (sequence)</button>
 			<button id="blink_sequence">blink (sequence)</button>
+			<button id="stop">stop</button>
 		</div>
 		
 		<div class="image_switch">
@@ -99,5 +160,7 @@
 		</div>
 		
 		<div style="clear: both;"></div>
+		
+		<textarea id="output" style="width: 500px; height: 300px;"></textarea>
 	</body>
 </html>
