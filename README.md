@@ -39,7 +39,7 @@ FILE STRUCTURE
 MINIMAL EXAMPLE
 ---------------
 
-This is a minimal example of an HTML page with 3 overlapping Images which crossfade from one image to the other when the mouse hovers over the images.
+This is a minimal example of an HTML page with 3 overlapping images which crossfade from one image to the other when the mouse hovers over the images.
 
     <!DOCTYPE html>
     <html>
@@ -54,11 +54,11 @@ This is a minimal example of an HTML page with 3 overlapping Images which crossf
         </script>
     
         <style>
-            .image_switch {
-                position: relative;
-                width: 128px;
-                height: 128px;
-            }
+          .image_switch {
+            position: relative;
+            width: 128px;
+            height: 128px;
+          }
           .image_switch img {
             position: absolute;
             top: 0;
@@ -91,7 +91,7 @@ SETUP
 ### Script
 
 To setup the ImageSwitch plugin simply include the javascript file in the <head> of your document
-    <script type="text/javascript" src="jquery.imageSwitch.js"></script>
+    <script type="text/javascript" src="jquery.imageswitch.js"></script>
 
 You will also need to include jQuery
 
@@ -113,7 +113,7 @@ You can also nest the images inside this structure, e.g. by surrounding anchor t
       <a href="#"><img src="imgs/top_image.png" /></a>
     </div>
 
-If you would like to use background images instead you must declare classes 'imageBottom' and 'imageTop' for the top and bottom images.
+If you would like to use background images instead you need to declare classes 'imageBottom' and 'imageTop' for the top and bottom images.
 
     <div class="switch_image">
       <div class="imageBottom" style="background: url('imgs/bottom_image.png')"></div>
@@ -131,8 +131,11 @@ The two top and bottom image must completely overlap. A basic way to achieve thi
       .switch_image img:first-child {
         position: absolute;
         top: 0;
+        left: 0;
       }
     </style>
+    
+
 
 
 BASIC USAGE
