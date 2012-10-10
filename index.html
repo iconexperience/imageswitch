@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/iconexperience/iconswitch">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/iconexperience/imageswitch">View on GitHub</a>
 
           <h1 id="project_title">Iconswitch</h1>
           <h2 id="project_tagline">A jQuery plugin to perform switch animations between two overlapping images.</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/iconexperience/iconswitch/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/iconexperience/iconswitch/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/iconexperience/imageswitch/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/iconexperience/imageswitch/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -31,65 +31,87 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>jQuery ImageSwitch Plugin</p>
+        <h1>jQuery ImageSwitch Plugin</h1>
 
-<h1>DECSCRIPTION</h1>
+<hr><h2>DESCRIPTION</h2>
 
-<p>The plugin is used to perform switch animations between two overlapping images.</p>
+<p>The plugin is used to perform switch animations between two overlapping images.
+The plugin was originally developed for a demonstration to switch between two icons in different style as can be seen here.</p>
 
-<h1>FEATURES</h1>
+<h2>FEATURES</h2>
 
 <ul>
 <li>different switch animation effects</li>
 <li>switch on mouse hover</li>
 <li>sequential switch on multiple images</li>
-<li>switching between two semi-transparent images</li>
-</ul><h1>MINIMAL FULL WORKING EXAMPLE</h1>
+<li>switching between two transparent images</li>
+</ul><h2>FILE STRUCTURE</h2>
+
+<pre><code>/examples                 -&gt; folder with fully working examples
+  /imgs                   -&gt; images used for examples
+    ...
+  /jquery                 -&gt; jQuery sources
+    ...
+  all_examples.html       -&gt; all examples
+  animation_queue         -&gt; example with multiple queued animations
+  animations.html         -&gt; basic animation example
+  hover.html              -&gt; mouse hover example
+/src              
+  jquery.imageswitch.js   -&gt; ImageSwitch jQuery plugin file
+README.md                 -&gt; this readme file
+</code></pre>
+
+<h2>MINIMAL EXAMPLE</h2>
+
+<p>This is a minimal example of an HTML page with 3 overlapping images which crossfade from one image to the other when the mouse hovers over the images.</p>
 
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-    &lt;head&gt;
-        &lt;script src="../jquery/jquery.js" type="text/javascript"&gt;&lt;/script&gt;
-        &lt;script src="../src/jquery.imageswitch.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;head&gt;
+    &lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="jquery.imageswitch.js" type="text/javascript"&gt;&lt;/script&gt;
 
-        &lt;script&gt;
-            $(document).ready(function() {
-                $('.image_switch').imageSwitch('hover');
-            });
-        &lt;/script&gt;
+    &lt;script&gt;
+      $(document).ready(function() {
+        $('.image_switch').imageSwitch('hover');
+      });
+    &lt;/script&gt;
 
-        &lt;style&gt;
-            .image_switch {
-                position: relative;
-            }
-            .image_switch img:first-child {
-                position: absolute;
-                top: 0;
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div class="image_switch"&gt;
-            &lt;img src="imgs/example_bottom_image_1.png" /&gt;
-            &lt;img src="imgs/example_top_image_1.png" /&gt;
-        &lt;/div&gt;
+    &lt;style&gt;
+      .image_switch {
+        position: relative;
+        width: 128px;
+        height: 128px;
+      }
+      .image_switch img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="image_switch"&gt;
+      &lt;img src="example_bottom_image_1.png" /&gt;
+      &lt;img src="example_top_image_1.png" /&gt;
+    &lt;/div&gt;
 
-        &lt;div class="image_switch"&gt;
-            &lt;img src="imgs/example_bottom_image_2.png" /&gt;
-            &lt;img src="imgs/example_top_image_2.png" /&gt;
-        &lt;/div&gt;
+    &lt;div class="image_switch"&gt;
+      &lt;img src="example_bottom_image_2.png" /&gt;
+      &lt;img src="imgs/example_top_image_2.png" /&gt;
+    &lt;/div&gt;
 
-        &lt;div class="image_switch"&gt;
-            &lt;img src="imgs/example_bottom_image_3.png" /&gt;
-            &lt;img src="imgs/example_top_image_3.png" /&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
+    &lt;div class="image_switch"&gt;
+      &lt;img src="example_bottom_image_3.png" /&gt;
+      &lt;img src="example_top_image_3.png" /&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt; 
 </code></pre>
 
-<h1>SETUP</h1>
+<h2>SETUP</h2>
 
-<h2>Script</h2>
+<h3>Script</h3>
 
 <p>To setup the ImageSwitch plugin simply include the javascript file in the </p> of your document
     <p>You will also need to include jQuery</p>
@@ -97,7 +119,7 @@
 <pre><code>&lt;script type="text/javscript" src=""jquery.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<h2>Markup</h2>
+<h3>Markup</h3>
 
 <p>Place the top and bottom image in a surrounding div.</p>
 
@@ -115,7 +137,7 @@
 &lt;/div&gt;
 </code></pre>
 
-<p>If you would like to use background images instead you must declare classes 'imageBottom' and 'imageTop' for the top and bottom images.</p>
+<p>If you would like to use background images instead you need to declare classes 'imageBottom' and 'imageTop' for the top and bottom images.</p>
 
 <pre><code>&lt;div class="switch_image"&gt;
   &lt;div class="imageBottom" style="background: url('imgs/bottom_image.png')"&gt;&lt;/div&gt;
@@ -123,7 +145,7 @@
 &lt;/div&gt;
 </code></pre>
 
-<h2>Style</h2>
+<h3>Style</h3>
 
 <p>The two top and bottom image must completely overlap. A basic way to achieve this is </p>
 
@@ -134,11 +156,12 @@
   .switch_image img:first-child {
     position: absolute;
     top: 0;
+    left: 0;
   }
 &lt;/style&gt;
 </code></pre>
 
-<h1>BASIC USAGE</h1>
+<h2>BASIC USAGE</h2>
 
 <p>To switch from the top image to the bottom image you can simply call:</p>
 
@@ -196,205 +219,562 @@
 <p>The init function can be queued just like any other action:</p>
 
 <pre><code>$(selector)
-  .imageSwitch('bottom') // switch to bottom in 1000 milliseconds default time 
+  .imageSwitch('bottom')                  // switch to bottom in 1000 milliseconds default time 
   .imageSwitch('init', { duration: 500 }) // init animation time for all future calls
-  .imageSwitch('top') // switch to top in 500 milliseconds
+  .imageSwitch('top')                     // switch to top in 500 milliseconds
 </code></pre>
 
-<p>This is just a small overview of what's possible with this plugin. See the API reference below to get the complete picture.   </p>
+<p>This is just a small overview of what's possible with this plugin. See the API reference below to get the complete picture.</p>
 
-<h1>API</h1>
+<h2>API</h2>
 
-<h1>.imageSwitch('init'), .imageSwitch()</h1>
+<h3>.imageSwitch('init'), .imageSwitch()</h3>
 
 <p>Description: Init the ImageSwitch Object with. </p>
 
-<hr><h2>.imageSwitch('init'[, callBack]), .imageSwitch([callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('init'[, callback]), .imageSwitch([callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h2>.imageSwitch('init'[, options][, callBack]), .imageSwitch([options][, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('init'[, options][, callback]), .imageSwitch([options][, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h3>options - A map of additional options to pass to the method. Supported Keys:</h3>
+<p><strong>options</strong> - A map of additional options to pass to the method. Supported Keys:</p>
 
 <ul>
-<li><p>transformation: A string indicating which transformation animation to use ('fade', 'slide')
-               defaults to: 'fade'      </p></li>
-<li><p>duration: Time in milliseconds
-         defaults to: 1000</p></li>
-<li><p>easing: A string indicating the easing function to use (see jQuery easing documentation)
-       defaults to: 'linear'</p></li>
-<li><p>queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-      defaults to: 'fx'</p></li>
-<li><p>selectors: A map with keys imgBottom and imgTop to specify specific selectors for the bottom and top image
-          Can only be set on a 
-          defaults to: { imgBottom: ':first-child', imgTop: ':nth-child(2)' }</p></li>
-<li><p>switchBottomImage: A boolean indicating if the bottom image should also be animated. This is useful for
-                  semi transparent images where bottom image would be visible underneath the top image. 
-                  defaults to: false</p></li>
-</ul><h1>.imageSwitch('top')</h1>
+<li>
+<p><em>transformation</em>: A string indicating which transformation animation to use ('fade', 'slide')</p>
+
+<p>defaults to: 'fade'                        </p>
+</li>
+<li>
+<p><em>duration</em>: Time in milliseconds</p>
+
+<p>defaults to: 1000</p>
+</li>
+<li>
+<p><em>easing</em>: A string indicating the easing function to use (see jQuery easing documentation)</p>
+
+<p>defaults to: 'linear'</p>
+</li>
+<li>
+<p><em>queue</em>: A string indicating what queue to use for the animation (see jQuery queue documentation)</p>
+
+<p>defaults to: 'fx'</p>
+</li>
+<li>
+<p><em>selectors</em>: A map with keys imgBottom and imgTop to specify specific selectors for the bottom and top image</p>
+
+<p>defaults to: { imgBottom: ':first-child', imgTop: ':nth-child(2)' }</p>
+</li>
+<li>
+<p><em>switchBottomImage</em>: A boolean indicating if the bottom image should also be animated. This is useful for semi transparent images where bottom image would be visible underneath the top image. </p>
+
+<p>defaults to: false</p>
+</li>
+</ul><h3>.imageSwitch('top')</h3>
 
 <p>Description: Animate to top image.</p>
 
-<hr><h2>.imageSwitch('top'[, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('top'[, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h2>.imageSwitch('top'[, options][, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('top'[, options][, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h3>options - A map of additional options to pass to the method. Supported Keys:</h3>
+<p><strong>options</strong> - A map of additional options to pass to the method. Supported Keys:</p>
 
 <ul>
-<li><p>transformation: A string indicating which transformation animation to use ('fade', 'slide')
-               defaults to: 'fade'      </p></li>
-<li><p>duration: Time in milliseconds
-         defaults to: 1000</p></li>
-<li><p>easing: A string indicating the easing function to use (see jQuery easing documentation)
-       defaults to: 'linear'</p></li>
-<li><p>queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-      defaults to: 'fx'</p></li>
-<li><p>cycle: Set to true to run animation in an repeating cycle
-      defaults to: false</p></li>
-<li><p>cyclePauseDuration: Time in milliseconds to pause between cycles
-      defaults to: 2000</p></li>
-<li><p>onStartCycle: Callback function when cycle starts
-      defaults to: empty function</p></li>
-<li><p>onFinishCycle: Callback function when cycle ends
-      defaults to: empty function</p></li>
-<li><p>sequence: 
-      defaults to: false { order: 'forward', interval: #duration of animation# }}</p></li>
-</ul><h1>.imageSwitch('bottom')</h1>
+<li>
+<p><em>transformation</em>: A string indicating which transformation animation to use ('fade', 'slide')</p>
+
+<p>defaults to: 'fade'      </p>
+</li>
+<li>
+<p><em>duration</em>: Time in milliseconds</p>
+
+<p>defaults to: 1000</p>
+</li>
+<li>
+<p><em>easing</em>: A string indicating the easing function to use (see jQuery easing documentation)</p>
+
+<p>defaults to: 'linear'</p>
+</li>
+<li>
+<p><em>queue</em>: A string indicating what queue to use for the animation (see jQuery queue documentation)</p>
+
+<p>defaults to: 'fx'</p>
+</li>
+<li>
+<p><em>onStart</em>: Callback function when animation starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinish</em>: Callback function when animation finishes</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>cycle</em>: Set to true to run animation in an repeating cycle</p>
+
+<p>defaults to: false</p>
+</li>
+<li>
+<p><em>cyclePauseDuration</em>: Time in milliseconds to pause between cycles</p>
+
+<p>defaults to: 2000</p>
+</li>
+<li>
+<p><em>onStartCycle</em>: Callback function when cycle starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishCycle</em>: Callback function when cycle ends</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>sequence</em>: Animate all images one by one in a sequence order.</p>
+
+<p>You can set this option to true or false. If you want more control pass a map of additional options:</p>
+
+<ul>
+<li>
+<p><em>order</em>: set to 'forward' | 'reverse' | 'random'</p>
+
+<p>defaults to: 'forward'</p>
+</li>
+<li>
+<p><em>interval</em>: time in milliseconds</p>
+
+<p>defaults to: #duration of animation#</p>
+</li>
+<li>
+<p><em>onStartSequenceStep</em>: Callback function when each animation in the sequence starts.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishSequenceStep</em>: Callback function when each animation in the sequence finishes.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+</ul>
+<p>setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}</p>
+
+<p>defaults to: false</p>
+</li>
+</ul><h3>.imageSwitch('bottom')</h3>
 
 <p>Description: Animate to bottom image.</p>
 
-<hr><h2>.imageSwitch('bottom'[, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('bottom'[, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h2>.imageSwitch('bottom'[, options][, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('bottom'[, options][, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h3>options - A map of additional options to pass to the method. Supported Keys:</h3>
+<p><strong>options</strong> - A map of additional options to pass to the method. Supported Keys:</p>
 
 <ul>
-<li><p>transformation: A string indicating which transformation animation to use ('fade', 'slide')
-               defaults to: 'fade'      </p></li>
-<li><p>duration: Time in milliseconds
-         defaults to: 1000</p></li>
-<li><p>easing: A string indicating the easing function to use (see jQuery easing documentation)
-       defaults to: 'linear'</p></li>
-<li><p>queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-      defaults to: 'fx'</p></li>
-</ul><h1>.imageSwitch('toggle')</h1>
+<li>
+<p><em>transformation</em>: A string indicating which transformation animation to use ('fade', 'slide')</p>
+
+<p>defaults to: 'fade'      </p>
+</li>
+<li>
+<p><em>duration</em>: Time in milliseconds</p>
+
+<p>defaults to: 1000</p>
+</li>
+<li>
+<p><em>easing</em>: A string indicating the easing function to use (see jQuery easing documentation)</p>
+
+<p>defaults to: 'linear'</p>
+</li>
+<li>
+<p><em>queue</em>: A string indicating what queue to use for the animation (see jQuery queue documentation)</p>
+
+<p>defaults to: 'fx'</p>
+</li>
+<li>
+<p><em>onStart</em>: Callback function when animation starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinish</em>: Callback function when animation finishes</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>cycle</em>: Set to true to run animation in an repeating cycle</p>
+
+<p>defaults to: false</p>
+</li>
+<li>
+<p><em>cyclePauseDuration</em>: Time in milliseconds to pause between cycles</p>
+
+<p>defaults to: 2000</p>
+</li>
+<li>
+<p><em>onStartCycle</em>: Callback function when cycle starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishCycle</em>: Callback function when cycle ends</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>sequence</em>: Animate all images one by one in a sequence order.</p>
+
+<p>You can set this option to true or false. If you want more control pass a map of additional options:</p>
+
+<ul>
+<li>
+<p><em>order</em>: set to 'forward' | 'reverse' | 'random'</p>
+
+<p>defaults to: 'forward'</p>
+</li>
+<li>
+<p><em>interval</em>: time in milliseconds</p>
+
+<p>defaults to: #duration of animation#</p>
+</li>
+<li>
+<p><em>onStartSequenceStep</em>: Callback function when each animation in the sequence starts.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishSequenceStep</em>: Callback function when each animation in the sequence finishes.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+</ul>
+<p>setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}</p>
+
+<p>defaults to: false</p>
+</li>
+</ul><h3>.imageSwitch('toggle')</h3>
 
 <p>Description: Animate to other image.</p>
 
-<hr><h2>.imageSwitch('toggle'[, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('toggle'[, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h2>.imageSwitch('toggle'[, options][, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('toggle'[, options][, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h3>options - A map of additional options to pass to the method. Supported Keys:</h3>
+<p><strong>options</strong> - A map of additional options to pass to the method. Supported Keys:</p>
 
 <ul>
-<li><p>transformation: A string indicating which transformation animation to use ('fade', 'slide')
-               defaults to: 'fade'      </p></li>
-<li><p>duration: Time in milliseconds
-         defaults to: 1000</p></li>
-<li><p>easing: A string indicating the easing function to use (see jQuery easing documentation)
-       defaults to: 'linear'</p></li>
-<li><p>queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-      defaults to: 'fx'</p></li>
-</ul><h1>.imageSwitch('blink')</h1>
+<li>
+<p><em>transformation</em>: A string indicating which transformation animation to use ('fade', 'slide')</p>
+
+<p>defaults to: 'fade'      </p>
+</li>
+<li>
+<p><em>duration</em>: Time in milliseconds</p>
+
+<p>defaults to: 1000</p>
+</li>
+<li>
+<p><em>easing</em>: A string indicating the easing function to use (see jQuery easing documentation)</p>
+
+<p>defaults to: 'linear'</p>
+</li>
+<li>
+<p><em>queue</em>: A string indicating what queue to use for the animation (see jQuery queue documentation)</p>
+
+<p>defaults to: 'fx'</p>
+</li>
+<li>
+<p><em>onStart</em>: Callback function when animation starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinish</em>: Callback function when animation finishes</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>cycle</em>: Set to true to run animation in an repeating cycle</p>
+
+<p>defaults to: false</p>
+</li>
+<li>
+<p><em>cyclePauseDuration</em>: Time in milliseconds to pause between cycles</p>
+
+<p>defaults to: 2000</p>
+</li>
+<li>
+<p><em>onStartCycle</em>: Callback function when cycle starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishCycle</em>: Callback function when cycle ends</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>sequence</em>: Animate all images one by one in a sequence order.</p>
+
+<p>You can set this option to true or false. If you want more control pass a map of additional options:</p>
+
+<ul>
+<li>
+<p><em>order</em>: set to 'forward' | 'reverse' | 'random'</p>
+
+<p>defaults to: 'forward'</p>
+</li>
+<li>
+<p><em>interval</em>: time in milliseconds</p>
+
+<p>defaults to: #duration of animation#</p>
+</li>
+<li>
+<p><em>onStartSequenceStep</em>: Callback function when each animation in the sequence starts.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishSequenceStep</em>: Callback function when each animation in the sequence finishes.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+</ul>
+<p>setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}</p>
+
+<p>defaults to: false</p>
+</li>
+</ul><h3>.imageSwitch('blink')</h3>
 
 <p>Description: Animate to other image and back. This is equivalent to calling toggle twice.</p>
 
-<hr><h2>.imageSwitch('blink'[, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('blink'[, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h2>.imageSwitch('blink'[, options][, callBack]) - Returns: jQuery</h2>
+<h4>.imageSwitch('blink'[, options][, callback]) - Returns: jQuery</h4>
 
-<h3>callback - A function to call once the animation is complete.</h3>
+<p><strong>callback</strong> - A function to call once the animation is complete.</p>
 
-<h3>options - A map of additional options to pass to the method. Supported Keys:</h3>
+<p><strong>options</strong> - A map of additional options to pass to the method. Supported Keys:</p>
 
 <ul>
-<li><p>transformation: A string indicating which transformation animation to use ('fade', 'slide')
-               defaults to: 'fade'      </p></li>
-<li><p>duration: Time in milliseconds
-         defaults to: 1000</p></li>
-<li><p>easing: A string indicating the easing function to use (see jQuery easing documentation)
-       defaults to: 'linear'</p></li>
-<li><p>queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-      defaults to: 'fx'</p></li>
-<li><p>pauseDuration: Time in milliseconds
-              defaults to: 0</p></li>
-<li><p>switch1Options: options for first toggle animation. 
-               defaults to: {}</p></li>
-<li><p>switch2Options: options for second toggle animation.
-               defaults to: {}</p></li>
-</ul><h1>.imageSwitch('hover')</h1>
+<li>
+<p><em>transformation</em>: A string indicating which transformation animation to use ('fade', 'slide')</p>
+
+<p>defaults to: 'fade'      </p>
+</li>
+<li>
+<p><em>duration</em>: Time in milliseconds</p>
+
+<p>defaults to: 1000</p>
+</li>
+<li>
+<p><em>easing</em>: A string indicating the easing function to use (see jQuery easing documentation)</p>
+
+<p>defaults to: 'linear'</p>
+</li>
+<li>
+<p><em>queue</em>: A string indicating what queue to use for the animation (see jQuery queue documentation)</p>
+
+<p>defaults to: 'fx'</p>
+</li>
+<li>
+<p><em>onStart</em>: Callback function when animation starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinish</em>: Callback function when animation finishes</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>cycle</em>: Set to true to run animation in an repeating cycle</p>
+
+<p>defaults to: false</p>
+</li>
+<li>
+<p><em>cyclePauseDuration</em>: Time in milliseconds to pause between cycles</p>
+
+<p>defaults to: 2000</p>
+</li>
+<li>
+<p><em>onStartCycle</em>: Callback function when cycle starts</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishCycle</em>: Callback function when cycle ends</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>sequence</em>: Animate all images one by one in a sequence order.</p>
+
+<p>You can set this option to true or false. If you want more control pass a map of additional options:</p>
+
+<ul>
+<li>
+<p><em>order</em>: set to 'forward' | 'reverse' | 'random'</p>
+
+<p>defaults to: 'forward'</p>
+</li>
+<li>
+<p><em>interval</em>: time in milliseconds</p>
+
+<p>defaults to: #duration of animation#</p>
+</li>
+<li>
+<p><em>onStartSequenceStep</em>: Callback function when each animation in the sequence starts.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishSequenceStep</em>: Callback function when each animation in the sequence finishes.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+</ul>
+<p>setting the sequence option to true is equivalent to { order: 'forward', interval: #duration of animation# }}</p>
+
+<p>defaults to: false</p>
+</li>
+<li>
+<p><em>pauseDuration</em>: Time in milliseconds</p>
+
+<p>defaults to: 0</p>
+</li>
+<li>
+<p><em>switch1Options</em>: options for first toggle animation. </p>
+
+<p>defaults to: {}</p>
+</li>
+<li>
+<p><em>switch2Options</em>: options for second toggle animation.</p>
+
+<p>defaults to: {}</p>
+</li>
+</ul><h3>.imageSwitch('hover')</h3>
 
 <p>Description: Apply switch image animation when mouse hovers over element.</p>
 
-<hr><h2>.imageSwitch('hover'[, options]) - Returns: jQuery</h2>
+<h4>.imageSwitch('hover'[, options]) - Returns: jQuery</h4>
 
-<h3>options - A map of additional options to pass to the method. Supported Keys:</h3>
+<p><strong>options</strong> - A map of additional options to pass to the method. Supported Keys:</p>
 
 <ul>
-<li><p>transformation: A string indicating which transformation animation to use ('fade', 'slide')
-               defaults to: 'fade'      </p></li>
-<li><p>duration: Time in milliseconds
-         defaults to: 1000</p></li>
-<li><p>easing: A string indicating the easing function to use (see jQuery easing documentation)
-       defaults to: 'linear'</p></li>
-<li><p>queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-      defaults to: 'fx'</p></li>
-<li><p>onStartHoverOver: Callback function when mouse moves over and animation starts.
-                 defaults to: empty function</p></li>
-<li><p>onFinishHoverOver: Callback function when mouse moves over and animation finishes.
-                  defaults to: empty function</p></li>
-<li><p>onStartHoverOut: Callback function when mouse moves out and animation starts.
-                defaults to: empty function</p></li>
-<li><p>onFinishHoverOut: Callback function when mouse moves out and animation finishes.
-                 defaults to: empty function</p></li>
-<li><p>onAllFinishHoverOut: Incors.Util.emptyFunction,
-                    defaults to: empty function</p></li>
-<li><p>hoverSelector: Specific selector to trigger mouse hover. By default the image switch element is used. 
-              defaults to: null</p></li>
-<li><p>hoverSelectorDirectionUp: Direction for the hover selector (up, down). This makes it possible to specify a trigger for the mouse hover
-                         which is either inside or outside the actual switch switch element.
-                         defaults to: true</p></li>
-<li><p>switchHoverOverElem: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).
-                    default to: 'bottom'</p></li>
-<li><p>switchHoverOutElem: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).
-                   default to: 'top'</p></li>
-<li><p>switchNonHoverOverElems: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).
-                        default to: 'top'</p></li>
-<li><p>switchNonHoverOutElems: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).
-                       default to: null</p></li>
-<li><p>stopOnHoverOut: If true stops the animation (if still running) specified for option switchHoverOverElem immediately.
-               defaults to: true</p></li>
-</ul><h1>.imageSwitch('stop')</h1>
+<li>
+<p><em>transformation</em>: A string indicating which transformation animation to use ('fade', 'slide')</p>
+
+<p>defaults to: 'fade'                         </p>
+</li>
+<li>
+<p><em>duration</em>: Time in milliseconds</p>
+
+<p>defaults to: 1000</p>
+</li>
+<li>
+<p><em>easing</em>: A string indicating the easing function to use (see jQuery easing documentation)</p>
+
+<p>defaults to: 'linear'</p>
+</li>
+<li>
+<p><em>queue</em>: A string indicating what queue to use for the animation (see jQuery queue documentation)</p>
+
+<p>defaults to: 'fx'</p>
+</li>
+<li>
+<p><em>onStartHoverOver</em>: Callback function when mouse moves over and animation starts.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishHoverOver</em>: Callback function when mouse moves over and animation finishes.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onStartHoverOut</em>: Callback function when mouse moves out and animation starts.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onFinishHoverOut</em>: Callback function when mouse moves out and animation finishes.</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>onAllFinishHoverOut</em>: Incors.Util.emptyFunction,</p>
+
+<p>defaults to: #empty function#</p>
+</li>
+<li>
+<p><em>hoverSelector</em>: Specific selector to trigger mouse hover. By default the image switch element is used. </p>
+
+<p>defaults to: null</p>
+</li>
+<li>
+<p><em>hoverSelectorDirectionUp</em>: Direction for the hover selector (up, down). This makes it possible to specify a trigger for the mouse hover which is either inside or outside the actual switch switch element.</p>
+
+<p>defaults to: true</p>
+</li>
+<li>
+<p><em>switchHoverOverElem</em>: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).</p>
+
+<p>default to: 'bottom'</p>
+</li>
+<li>
+<p><em>switchHoverOutElem</em>: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).</p>
+
+<p>default to: 'top'</p>
+</li>
+<li>
+<p><em>switchNonHoverOverElems</em>: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).</p>
+
+<p>default to: 'top'</p>
+</li>
+<li>
+<p><em>switchNonHoverOutElems</em>: Animation to use on the hover target when mouse moves over (bottom, top, toggle, blink, null).</p>
+
+<p>default to: null</p>
+</li>
+<li>
+<p><em>stopOnHoverOut</em>: If true stops the animation (if still running) specified for option switchHoverOverElem immediately.</p>
+
+<p>defaults to: true</p>
+</li>
+</ul><h3>.imageSwitch('stop')</h3>
 
 <p>Description: Stops animations.</p>
 
-<hr><h2>.imageSwitch('stop'[, options]) - Returns: jQuery</h2>
+<h4>.imageSwitch('stop'[, options]) - Returns: jQuery</h4>
 
-<h3>options - A map of additional options to pass to the method. Supported Keys:</h3>
+<p><strong>options</strong> - A map of additional options to pass to the method. Supported Keys:</p>
 
 <ul>
-<li>queue: A string indicating what queue to use for the animation (see jQuery queue documentation)
-      defaults to</li>
+<li>
+<p><em>queue</em>: A string indicating what queue to use for the animation (see jQuery queue documentation)</p>
+
+<p>defaults to: 'fx'</p>
+</li>
 </ul>
       </section>
     </div>
