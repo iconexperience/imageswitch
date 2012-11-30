@@ -182,6 +182,10 @@
 			};
 			
 			this.onHoverOut = function(event) {
+				if ($this.hoverOverCount == 0) {
+				  return;
+				}
+				
 				var elem = this;
 				$this.hoverOverCount--;
 				options.onStartHoverOut(elem);
@@ -705,7 +709,7 @@
 			
 			var easing = options.easing;
 			if (imageSwitcher.switchBottomImage) {
-				animationNum += elems.length;
+			  animationNum += elems.length;
 				var fadeBottomTo = top ? 0 : 1;
 				var imgBottom = imageSwitcher._getImgsBottom(elems);
 				imgBottom.fadeTo(options.duration, fadeBottomTo, easing, done);
@@ -787,14 +791,14 @@
 	$.fn.imageSwitch = function(method) {
 		// Method calling logic
 		if ($.isPlainObject(method) || method == 'init') {
-		  var args = method == 'init' ? Array.prototype.slice.call( arguments, 1) : arguments;
+		  var args = method == 'init' ? Array.prototype.slice.call(arguments, 1) : arguments;
 		  if (!(this._imageSwitcher)) {
-		    if (arguments.length == 0) {
+		    if (args.length == 0) {
 		      this._imageSwitcher = new Incors.ImageSwitch(this);
-		    } else if (arguments.length == 1) {
-		      this._imageSwitcher = new Incors.ImageSwitch(this, arguments[0]);
-		    } else if (arguments.length == 2) {
-		    	this._imageSwitcher = new Incors.ImageSwitch(this, arguments[0], arguments[1]);
+		    } else if (args.length == 1) {
+		      this._imageSwitcher = new Incors.ImageSwitch(this, args[0]);
+		    } else if (args.length == 2) {
+		      this._imageSwitcher = new Incors.ImageSwitch(this, args[0], args[1]);
 		    }
 		  } else {
 				this._imageSwitcher.init.apply(this._imageSwitcher, args);

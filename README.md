@@ -533,7 +533,7 @@ Description: Apply switch image animation when mouse hovers over element.
  + *onFinishHoverOut*: Callback function when mouse moves out and animation finishes.
 
     defaults to: #empty function#
- + *onAllFinishHoverOut*: Incors.Util.emptyFunction,
+ + *onAllFinishHoverOut*: Callback function when mouse moved out of all elements and all animations are finished,
 
     defaults to: #empty function#
  + *hoverSelector*: Specific selector to trigger mouse hover. By default the image switch element is used. 

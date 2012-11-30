@@ -38,14 +38,15 @@
 							.imageSwitch('toggle', {
 							  duration: 5000,
 							  easing: 'easeInOutQuad', // needs jquery-ui
-							  onStart: outFunc("toggle  -  options: { duration: 5000; easing: 'easeInOutExpo' }")
+							  onStart: outFunc("toggle  -  options: { duration: 5000; easing: 'easeInOutExpo' }"),
+							  onFinish: outFunc('fadeOut (jQuery animation)')
 							})
 							
 							// jQuery fadeOut
-							.fadeOut(2000, outFunc('fadeOut (jQuery animation)'))
+							.fadeOut(2000, outFunc('fadeIn (jQuery animation)'))
 							
 							// jQuery fadeIn
-							.fadeIn(2000, outFunc('fadeIn (jQuery animation)'))
+							.fadeIn(2000)
 							
 							// blink
 							.imageSwitch('blink', {
@@ -89,7 +90,7 @@
 							  transformation: 'fade',
 							  duration: 2000,
 							  onStart: outFunc("init  -  options: { transformation: 'fade', duration: 2000 }")
-							}, animationQueue)
+							})
 							
 							;
 							
@@ -100,6 +101,8 @@
 				
 				$('#stop').click(function() {
 				  out('stop');
+				  
+				  imageSwitchElems.stop(true);
 				  imageSwitchElems.imageSwitch('stop');
 				});
 				
@@ -108,7 +111,13 @@
 				  $('#output').val(lineNum++ + ': ' + text + "\n" + $('#output').val()); 
 				}
 				function outFunc(text) {
-				  return function() { out(text) };
+				  var called = false;
+				  return function() {
+				    if (!called) {
+				      out(text);
+				      called = true;
+				    }
+				  };
 				};
 				
 				$('#output').val('');
@@ -125,10 +134,12 @@
 			  float: left;
 			  
 			}
-			.image_switch > div {
+			.image_switch > * {
 				position: absolute;
 				top: 0;
 				left: 0;
+				
+				background-color: #b5cede;
 			}
 			
 			.imageBottom, .imageTop {
@@ -148,23 +159,23 @@
 		</div>
 		
 		<div class="image_switch">
-			<div class="imageBottom" style="background: url('imgs/example_bottom_1.png') #555;"></div>
-			<div class="imageTop" style="background: url('imgs/example_top_1.png') #050;"></div>
+			<div class="imageBottom" style="background-image: url('imgs/example_bottom_1.png');"></div>
+			<div class="imageTop" style="background-image: url('imgs/example_top_1.png');"></div>
 		</div>
 
 		<div class="image_switch">
-			<div class="imageBottom" style="background: url('imgs/example_bottom_2.png') #555;"></div>
-			<div class="imageTop" style="background: url('imgs/example_top_2.png') #050;"></div>
+			<div class="imageBottom" style="background-image: url('imgs/example_bottom_2.png');"></div>
+			<div class="imageTop" style="background-image: url('imgs/example_top_2.png');"></div>
 		</div>
 
 		<div class="image_switch">
-			<div class="imageBottom" style="background: url('imgs/example_bottom_3.png') #555;"></div>
-			<div class="imageTop" style="background: url('imgs/example_top_3.png') #050;"></div>
+			<div class="imageBottom" style="background-image: url('imgs/example_bottom_3.png');"></div>
+			<div class="imageTop" style="background-image: url('imgs/example_top_3.png');"></div>
 		</div>
 		
 		<div class="image_switch">
-			<div class="imageBottom" style="background: url('imgs/example_bottom_4.png') #555;"></div>
-			<div class="imageTop" style="background: url('imgs/example_top_4.png') #050;"></div>
+			<div class="imageBottom" style="background-image: url('imgs/example_bottom_4.png');"></div>
+			<div class="imageTop" style="background-image: url('imgs/example_top_4.png');"></div>
 		</div>
 		
 		<div style="clear: both;"></div>
