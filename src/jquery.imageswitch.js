@@ -445,7 +445,7 @@
 							interval: options.duration,
 							onStartSequenceStep: Incors.Util.emptyFunction,
 							onFinishSequenceStep: Incors.Util.emptyFunction,
-							order: 'forward', // forward, reverse, random
+							order: 'forward' // forward, reverse, random
 						}, sequenceOptions || {});
 						
 						if (sequenceOptions == true || sequenceOptions.order == 'forward') {
@@ -626,7 +626,7 @@
 	Incors.ImageSwitch.Transformations.slide.prototype = {
 		transform: function(elems, options, top, stop, callback) {
 			var options = $.extend({}, {
-				slideFrom: 'bottom', // bottom, left
+				slideFrom: 'bottom' // bottom, left
 			}, options);
 			
 			var imageSwitcher = this.imageSwitcher;
@@ -785,7 +785,7 @@
 				}
 			});
 			return bottomElems;
-		},
+		}
 	});
 	
 	$.fn.imageSwitch = function(method) {
